@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-# This is a base model for the Air BnB project
+# This is an updated base model for the Air BnB project
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -14,8 +15,8 @@ class BaseModel:
                 if key != '__class__':
                     if key in ('created_at', 'update_at'):
                         # Convert string representation to datetime
-                        setattr(self, key, datetime.strptime \
-                                (value, '%Y-%m-%dT%H:%M:%S.%f'))
+                        setattr(self, key, datetime.strptime(
+                            value, '%Y-%m-%dT%H:%M:%S.%f'))
                     else:
                         setattr(self, key, value)
             # Ensure 'id' attribute is set or generate a new one
@@ -25,6 +26,9 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.update_at = self.created_at
+        # Add a call to 'new' method on 'storage' for new instances
+        if not kwargs:
+            storage.new(self)
 
     def __str__(self):
         """Public instance method."""
@@ -36,6 +40,8 @@ class BaseModel:
         The update_at attribute with the current datetime is updated.
         """
         self.update_at = datetime.now()
+        # Call 'save' method of 'storage'
+        storage.save()
 
     def to_dict(self):
         """
