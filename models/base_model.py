@@ -6,16 +6,30 @@ from datetime import datetime
 
 class BaseModel:
     """Class for the Base Model"""
-    def __init__(self):
-        """public instance id to have a unique id for each base model"""
-        self.id = str(uuid.uuid4())
-        self.create_at = datetime.now()
-        self.update_at = datetime.now()
+
+    def __init__(self, *args, **kwargs):
+        """Constructor method for BaseModel."""
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key in ('create_at', 'update_at'):
+                        # Convert string representation to datetime
+                        setattr(self, key, datetime.strptime /
+                                (value, '%Y-%m-%dT%H:%M:%S.%f'))
+                    else:
+                        setattr(self, key, value)
+            # Ensure 'id' attribute is set or generate a new one
+            if 'id' not in kwargs:
+                self.id = str(uuid.uuid4())
+        else:
+            self.id = str(uuid.uuid4())
+            self.create_at = datetime.now()
+            self.update_at = self.create_at
 
     def __str__(self):
-        """Public instance method"""
+        """Public instance method."""
         return "[{}] ({}) {}".format(
-                self.__class__.__name__, self.id, self.__dict__)
+            self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
@@ -30,5 +44,5 @@ class BaseModel:
         instance_dict = self.__dict__.copy()
         instance_dict['create_at'] = self.create_at.isoformat()
         instance_dict['update_at'] = self.update_at.isoformat()
-        instance_dict['__class__'] = self.__class__.__name__  
+        instance_dict['__class__'] = self.__class__.__name__
         return instance_dict
