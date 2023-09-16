@@ -26,7 +26,8 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """Create a new instance of BaseModel, save it, and print the id."""
+        """Create a new instance of BaseModel, save it,
+        and print the id."""
         if not arg:
             print("** class name missing **")
             return
@@ -86,7 +87,8 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in ["BaseModel"]:
                 print("** class doesn't exist **")
                 return
-            obj_list = [v for k, v in obj_dict.items() if k.startswith(args[0] + ".")]
+            obj_list = [v for k, v in obj_dict.items()
+                        if k.startswith(args[0] + ".")]
         print([str(obj) for obj in obj_list])
 
     def do_update(self, arg):
