@@ -8,6 +8,10 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
+# Initialize the FileStorage with the models dictionary
+    def __init__(self, models):
+        self.models = models
+
     def all(self):
         return FileStorage.__objects
 
