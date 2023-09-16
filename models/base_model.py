@@ -2,7 +2,6 @@
 # This is an updated base model for the Air BnB project
 import uuid
 from datetime import datetime
-from models import storage
 
 
 class BaseModel:
