@@ -8,7 +8,7 @@ from models.base_model import BaseModel
 class TestFileStorage(unittest.TestCase):
 
     def setUp(self):
-        self.storage = FileStorage(models={})
+        self.storage = FileStorage()
 
     def tearDown(self):
         del self.storage
@@ -38,6 +38,6 @@ class TestFileStorage(unittest.TestCase):
         # Check if the object is reloaded correctly
         self.assertIn(obj_key, new_storage.all())
 
+
 if __name__ == '__main__':
     unittest.main()
-
