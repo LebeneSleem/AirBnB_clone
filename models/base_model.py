@@ -19,8 +19,10 @@ class BaseModel:
         """Initialize a new instance of the BaseModel.
 
         Args:
-            *args: Variable-length positional arguments (not used in this implementation).
-            **kwargs: Variable-length keyword arguments that can be used to initialize instance attributes.
+            *args: Variable-length positional arguments
+            (not used in this implementation).
+            **kwargs: Variable-length keyword arguments that
+            can be used to initialize instance attributes.
         """
         if kwargs is not None and kwargs != {}:
             for key in kwargs:
@@ -46,8 +48,8 @@ class BaseModel:
             and instance attributes.
         """
         class_name = type(self).__name__
-        attributes = ', '.join([f'{key}={value}'
-                     for key, value in self.__dict__.items()])
+        attributes = ', '.join([f'{key}={value}' for
+                                key, value in self.__dict__.items()])
         return f"[{class_name}] ({self.id}) {attributes}"
 
     def save(self):
