@@ -52,10 +52,8 @@ class TestUser(unittest.TestCase):
 
     """
         def test_user_str_representation(self):
-        
         Test if the string representation of a User
         instance is correctly formatted.
-        
         user = User(email="test@example.com", password="password123",
                     first_name="John", last_name="Doe")
         user_str = str(user)
