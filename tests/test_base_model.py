@@ -5,11 +5,13 @@ import unittest
 from datetime import datetime
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
 
     def test_init(self):
         """
-        Test if the BaseModel is correctly initialized with id, created_at, and updated_at attributes.
+        Test if the BaseModel is correctly initialized with id,
+        created_at, and updated_at attributes.
         """
         obj = BaseModel()
         self.assertTrue(hasattr(obj, 'id'))
@@ -26,8 +28,9 @@ class TestBaseModel(unittest.TestCase):
 
     def test_created_at_and_updated_at(self):
         """
-        Test if created_at and updated_at are correctly initialized as datetime objects
-        and if they have the same value upon initialization.
+        Test if created_at and updated_at are correctly initialized
+        as datetime objects and if they have the same value upon
+        initialization.
         """
         obj = BaseModel()
         self.assertIsInstance(obj.created_at, datetime)
@@ -45,7 +48,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         """
-        Test if the to_dict method correctly converts the BaseModel instance to a dictionary.
+        Test if the to_dict method correctly converts the BaseModel
+        instance to a dictionary.
         """
         obj = BaseModel()
         obj_dict = obj.to_dict()
@@ -58,13 +62,15 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str_representation(self):
         """
-        Test if the string representation of the BaseModel instance is correctly formatted.
+        Test if the string representation of the BaseModel
+        instance is correctly formatted.
         """
         obj = BaseModel()
         obj_str = str(obj)
         self.assertIsInstance(obj_str, str)
         self.assertIn('[BaseModel]', obj_str)
         self.assertIn(obj.id, obj_str)
+
 
 if __name__ == '__main__':
     unittest.main()
