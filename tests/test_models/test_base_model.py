@@ -28,15 +28,12 @@ class TestBaseModel(unittest.TestCase):
 
     def test_created_at_and_updated_at(self):
         """
-<<<<<<< HEAD
         Test if created_at and updated_at are correctly
         initialized as datetime objects
         and if they have the same value upon initialization.
-=======
         Test if created_at and updated_at are correctly initialized
         as datetime objects and if they have the same value upon
         initialization.
->>>>>>> 64041a7d1ae1a2f81f8d59b6e0ecb4059abc5232
         """
         obj = BaseModel()
         self.assertIsInstance(obj.created_at, datetime)
@@ -54,13 +51,10 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         """
-<<<<<<< HEAD
         Test if the to_dict method correctly converts
         the BaseModel instance to a dictionary.
-=======
         Test if the to_dict method correctly converts the BaseModel
         instance to a dictionary.
->>>>>>> 64041a7d1ae1a2f81f8d59b6e0ecb4059abc5232
         """
         obj = BaseModel()
         obj_dict = obj.to_dict()

@@ -4,6 +4,8 @@ HBNBCommandd class definition
 Entry point of the command interpreter
 """
 import cmd
+import json
+import re
 from models.base_model import BaseModel
 from models import storage
 from models.state import State
