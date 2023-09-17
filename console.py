@@ -154,7 +154,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        print([str(obj) for obj in storage.all().values() if isinstance(obj, model_classes[class_name])])
+        print([str(obj) for obj in storage.all().values()
+              if isinstance(obj, model_classes[class_name])])
 
     def do_update(self, arg):
         """Update an instance's attributes."""
