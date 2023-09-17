@@ -47,6 +47,7 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     obj_cls = self.classes().get(class_name)
                     if obj_cls:
+                        class_name = value.pop("__class__")
                         self.__objects[key] = obj_cls(**value)
 
     @classmethod
